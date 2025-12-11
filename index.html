@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Permata Cluster Sales Dashboard – Enterprise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-badge">PC</div>
+      <div>
+        <div class="logo-text-title">Permata Cluster</div>
+        <div class="logo-text-sub">Sales Performance Studio</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Dashboard Pages</div>
+      <div class="nav-list">
+        <button class="nav-item active" data-section="executive">
+          <span><span class="nav-dot"></span>Executive Summary</span>
+          <span>⟶</span>
+        </button>
+        <button class="nav-item" data-section="cluster">
+          <span><span class="nav-dot"></span>Cluster & Inventory</span>
+          <span>⟶</span>
+        </button>
+        <button class="nav-item" data-section="funnel">
+          <span><span class="nav-dot"></span>Sales Funnel & Channel</span>
+          <span>⟶</span>
+        </button>
+        <button class="nav-item" data-section="agents">
+          <span><span class="nav-dot"></span>Sales Agent Performance</span>
+          <span>⟶</span>
+        </button>
+        <button class="nav-item" data-section="profile">
+          <span><span class="nav-dot"></span>Customer Profile</span>
+          <span>⟶</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div><strong>LinkedIn Case Study Ready</strong></div>
+      <div>Gunakan screenshot dashboard ini sebagai portfolio project data/BI kamu.</div>
+      <div class="badge-pill">
+        <span>⚡</span>
+        <span>Dummy data for demo only</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="top-title">
+        <div class="top-title-row">
+          <h1>Permata Cluster Sales Dashboard</h1>
+          <span class="view-badge view-badge-desktop">Desktop View</span>
+          <span class="view-badge view-badge-mobile">Mobile View</span>
+        </div>
+        <p>Monitoring penjualan multi-cluster dari level executive sampai sales agent.</p>
+      </div>
+      <div class="top-controls">
+        <button class="btn" id="btn-reset">
+          <span class="icon">↺</span><span>Reset Filter</span>
+        </button>
+        <button class="btn btn-primary">
+          <span class="icon">📸</span><span>Export Screenshot</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <section class="filters">
+      <div class="filter-group">
+        <span class="filter-label">Periode</span>
+        <div class="filter-input">
+          <select id="filter-period">
+            <option value="YTD">Year to Date</option>
+            <option value="2025Q1">Q1 2025</option>
+            <option value="2025Q2">Q2 2025</option>
+            <option value="2025Q3">Q3 2025</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Cluster</span>
+        <div class="filter-input">
+          <select id="filter-cluster">
+            <option value="ALL">All Cluster</option>
+            <option value="A">Cluster A – Magnolia</option>
+            <option value="B">Cluster B – Serenade</option>
+            <option value="C">Cluster C – Elmwood</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Channel</span>
+        <div class="filter-input">
+          <select id="filter-channel">
+            <option value="ALL">All Channel</option>
+            <option value="IG Ads">Instagram Ads</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Referral">Referral</option>
+            <option value="Walk-in">Walk-in</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">View Mode</span>
+        <div class="filter-input">
+          <select id="filter-mode">
+            <option value="revenue">Revenue View</option>
+            <option value="units">Units View</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI CARDS -->
+    <section class="card-row">
+      <article class="card" id="card-revenue">
+        <div class="card-label">
+          <span>Total Revenue</span><span class="chip">YTD</span>
+        </div>
+        <div class="card-value" id="revenue-value">Rp 23.4B</div>
+        <div class="card-sub">Average selling price Rp 645jt / unit</div>
+        <div class="trend trend-up" id="revenue-trend">▲ 18.2% vs last year</div>
+      </article>
+      <article class="card card-soft">
+        <div class="card-label">
+          <span>Unit Terjual</span><span class="chip">Closing</span>
+        </div>
+        <div class="card-value" id="units-value">36 Unit</div>
+        <div class="card-sub">Dari 52 unit ready stock</div>
+        <div class="trend trend-up" id="takeup-trend">Take up rate 69%</div>
+      </article>
+      <article class="card card-soft">
+        <div class="card-label">
+          <span>Conversion Rate</span><span class="chip">Leads → Closing</span>
+        </div>
+        <div class="card-value" id="conv-value">12.4%</div>
+        <div class="card-sub">432 leads • 54 booking • 36 closing</div>
+        <div class="trend trend-up">▲ 2.1 pts vs last quarter</div>
+      </article>
+      <article class="card card-soft">
+        <div class="card-label">
+          <span>Cancelation Rate</span><span class="chip">Booking drop</span>
+        </div>
+        <div class="card-value" id="cancel-value">4.6%</div>
+        <div class="card-sub">Didominasi gagal KPR di Cluster C</div>
+        <div class="trend trend-down">▼ -1.3 pts vs last quarter</div>
+      </article>
+    </section>
+
+    <!-- SECTION: EXECUTIVE -->
+    <section class="section active" id="section-executive">
+      <div class="grid-2">
+        <article class="chart-card">
+          <div class="section-title">
+            <span>Penjualan per Cluster</span>
+            <span class="tag tag-hot">By revenue</span>
+          </div>
+          <p class="section-sub">Perbandingan kontribusi revenue dan unit terjual antar cluster.</p>
+          <canvas id="chartCluster"></canvas>
+        </article>
+
+        <article class="chart-card">
+          <div class="section-title">
+            <span>Komposisi Tipe Pembayaran</span>
+            <span class="tag">Cash / KPR / Inhouse</span>
+          </div>
+          <p class="section-sub">Menunjukkan ketergantungan penjualan terhadap fasilitas KPR.</p>
+          <canvas id="chartPayment"></canvas>
+          <div class="insight-box">
+            <strong>Insight singkat:</strong> 68% transaksi menggunakan KPR, menunjukkan pentingnya kerja sama bank & kualitas proses KPR.
+          </div>
+        </article>
+      </div>
+
+      <article class="chart-card">
+        <div class="section-title">
+          <span>Trend Penjualan Bulanan</span>
+          <span class="tag">12 bulan terakhir</span>
+        </div>
+        <p class="section-sub">Monitoring momentum penjualan dan dampak campaign marketing dari waktu ke waktu.</p>
+        <canvas id="chartTrend"></canvas>
+      </article>
+    </section>
+
+    <!-- SECTION: CLUSTER -->
+    <section class="section" id="section-cluster">
+      <article class="chart-card">
+        <div class="section-title">
+          <span>Ringkasan Cluster & Inventory</span>
+          <span class="tag">Take up rate per cluster</span>
+        </div>
+        <p class="section-sub">Melihat stok, unit terjual, dan tingkat serapan per cluster.</p>
+        <div class="pill-list">
+          <span class="pill pill-accent">Cluster B – fastest moving</span>
+          <span class="pill">Cluster C – cancelation KPR tinggi</span>
+          <span class="pill">Tipe 45/90 paling banyak diminati</span>
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <div class="section-title">
+          <span>Take Up Rate per Cluster</span>
+          <span class="tag">% terserap</span>
+        </div>
+        <canvas id="chartTakeup"></canvas>
+      </article>
+    </section>
+
+    <!-- SECTION: FUNNEL -->
+    <section class="section" id="section-funnel">
+      <div class="grid-2">
+        <article class="chart-card">
+          <div class="section-title">
+            <span>Sales Funnel</span>
+            <span class="tag">Leads → Visit → Booking → Closing</span>
+          </div>
+          <p class="section-sub">Menggambarkan penurunan jumlah prospek di setiap tahapan funnel.</p>
+          <canvas id="chartFunnel"></canvas>
+          <div class="insight-box">
+            <strong>Catatan:</strong> Drop terbesar di tahap Visit → Booking, perlu perbaikan follow-up & materi presentasi.
+          </div>
+        </article>
+
+        <article class="chart-card">
+          <div class="section-title">
+            <span>Channel Performance</span>
+            <span class="tag">Leads & closing per channel</span>
+          </div>
+          <p class="section-sub">Membandingkan jumlah leads dan closing tiap channel marketing.</p>
+          <canvas id="chartChannel"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: AGENTS -->
+    <section class="section" id="section-agents">
+      <article class="chart-card">
+        <div class="section-title">
+          <span>Sales Agent Performance</span>
+          <span class="tag">Top closer & coaching</span>
+        </div>
+        <div class="pill-list">
+          <span class="pill pill-accent">Top performer: Andi</span>
+          <span class="pill">Perlu coaching: Raka (konversi rendah)</span>
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <div class="section-title">
+          <span>Top 5 Sales by Revenue</span>
+          <span class="tag">Ranking YTD</span>
+        </div>
+        <canvas id="chartAgents"></canvas>
+      </article>
+    </section>
+
+    <!-- SECTION: PROFILE -->
+    <section class="section" id="section-profile">
+      <div class="grid-2">
+        <article class="chart-card">
+          <div class="section-title">
+            <span>Segment Harga</span>
+            <span class="tag">Distribusi unit terjual</span>
+          </div>
+          <p class="section-sub">Segmentasi penjualan berdasarkan range harga unit.</p>
+          <canvas id="chartPriceSegment"></canvas>
+        </article>
+
+        <article class="chart-card">
+          <div class="section-title">
+            <span>Domisili Pembeli</span>
+            <span class="tag">Top 5 cities</span>
+          </div>
+          <p class="section-sub">Asal kota pembeli untuk mendukung targeted campaign.</p>
+          <canvas id="chartCity"></canvas>
+        </article>
+      </div>
+
+      <article class="chart-card">
+        <div class="section-title">
+          <span>Buyer Persona Snapshot</span>
+          <span class="tag">Ringkasan profil</span>
+        </div>
+        <div class="pill-list">
+          <span class="pill pill-accent">55% usia 28–35 tahun</span>
+          <span class="pill pill-accent">68% karyawan swasta</span>
+          <span class="pill">Ticket size dominan 500–750jt</span>
+          <span class="pill">Mayoritas KPR tenor 15–20 tahun</span>
+        </div>
+        <div class="insight-box" style="margin-top:10px;">
+          <strong>Insight:</strong> Fokus campaign “rumah pertama” dengan paket DP ringan + simulasi KPR personal.
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+
+<!-- Library & JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
